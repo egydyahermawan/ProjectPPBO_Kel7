@@ -5,28 +5,20 @@
  */
 package frame;
 
-import javax.swing.table.DefaultTableModel;
-import java.sql.*;
-import koneksi.Konfig;
+import model.ModelSiswa;
 /**
  *
  * @author USER
  */
 public class Siswa extends javax.swing.JFrame {
-
+    ModelSiswa mSiswa;
     /**
      * Creates new form Siswa
      */
     public Siswa() {
         initComponents();
-    }
-    
-    public void tampilSiswa(){
-        DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("NIS");
-        model.addColumn("NAMA");
-        model.addColumn("KELAS");
-        
+        ModelSiswa mSiswa = new ModelSiswa(tblSiswa);
+        mSiswa.tampilSiswa();
     }
     
     /**
@@ -47,14 +39,14 @@ public class Siswa extends javax.swing.JFrame {
         tfNama = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         cmKelas = new javax.swing.JComboBox<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         btnSimpan = new javax.swing.JButton();
         btnBatal = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
         btnHapus = new javax.swing.JButton();
         btnCetak = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblSiswa = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,20 +68,12 @@ public class Siswa extends javax.swing.JFrame {
 
         cmKelas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "12 TKJ 1", "12 TKJ 2", "12 TKJ 3", "12 RPL" }));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "NIS", "NAMA", "KELAS"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
         btnSimpan.setText("Simpan");
+        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSimpanActionPerformed(evt);
+            }
+        });
 
         btnBatal.setText("Batal");
 
@@ -112,6 +96,19 @@ public class Siswa extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Daftar Data Siswa");
 
+        tblSiswa.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tblSiswa);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -120,7 +117,7 @@ public class Siswa extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator1)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -141,12 +138,15 @@ public class Siswa extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(cmKelas, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnKembali, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnKembali)))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -161,8 +161,8 @@ public class Siswa extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(btnKembali))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -186,7 +186,7 @@ public class Siswa extends javax.swing.JFrame {
                             .addComponent(btnHapus))
                         .addGap(18, 18, 18)
                         .addComponent(btnCetak)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
@@ -204,6 +204,15 @@ public class Siswa extends javax.swing.JFrame {
     private void btnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCetakActionPerformed
+
+    private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
+        String nis = tfNis.getText();
+        String nama = tfNama.getText();
+        String kelas = cmKelas.getSelectedItem().toString();
+        System.out.println(nis + nama + kelas);
+        mSiswa = new ModelSiswa(tblSiswa);
+        mSiswa.inputSiswa(nis, nama, kelas);
+    }//GEN-LAST:event_btnSimpanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,9 +262,9 @@ public class Siswa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblSiswa;
     private javax.swing.JTextField tfNama;
     private javax.swing.JTextField tfNis;
     // End of variables declaration//GEN-END:variables
