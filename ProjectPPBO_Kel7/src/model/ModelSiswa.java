@@ -27,7 +27,7 @@ public class ModelSiswa {
         model.addColumn("NAMA");
         model.addColumn("KELAS");
         try{
-            String sql = "SELECT * FROM siswa";
+            String sql = "SELECT * FROM siswa ORDER BY(nis)";
             java.sql.Connection conn = (Connection) Konfig.configDB();
             java.sql.Statement stm = conn.createStatement();
             java.sql.ResultSet rst = stm.executeQuery(sql);

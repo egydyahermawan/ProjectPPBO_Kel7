@@ -5,7 +5,13 @@
  */
 package frame;
 
+import java.io.InputStream;
+import javax.swing.JOptionPane;
+import koneksi.Konfig;
 import model.ModelSiswa;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 /**
  *
  * @author USER
@@ -207,8 +213,8 @@ public class Siswa extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
                         .addComponent(btnKembali))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -252,7 +258,16 @@ public class Siswa extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakActionPerformed
-        // TODO add your handling code here:
+        try{
+            InputStream is = Siswa.class
+                    .getResourceAsStream("/report/laporanDataSiswa.jasper");
+            JasperPrint jsPrint = 
+                    JasperFillManager.fillReport(is, null, Konfig.configDB());
+            JasperViewer.viewReport(jsPrint, false);
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Gagal mencetak laporan karena :"
+            + e.getMessage(), "Cetak Laporan", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnCetakActionPerformed
 
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
@@ -263,7 +278,6 @@ public class Siswa extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSimpanActionPerformed
 
     private void tblSiswaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSiswaMouseClicked
-        tfNis.setEditable(false);
         int row = tblSiswa.rowAtPoint(evt.getPoint());
         
         String nis = tblSiswa.getValueAt(row, 0).toString();
@@ -316,7 +330,7 @@ public class Siswa extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Siswa().setVisible(true);
+//                new Siswa().setVisible(true);
             }
         });
     }
