@@ -17,10 +17,6 @@ import koneksi.Konfig;
 public class ModelSiswa {
     JTable varTable;
     
-    public ModelSiswa(){
-        
-    }
-    
     public ModelSiswa(JTable varTable){
         this.varTable = varTable;
     }

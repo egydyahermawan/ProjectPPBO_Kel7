@@ -12,9 +12,7 @@ import model.ModelSiswa;
  */
 public class Siswa extends javax.swing.JFrame {
     ModelSiswa mSiswa;
-    /**
-     * Creates new form Siswa
-     */
+    
     public Siswa() {
         initComponents();
         ModelSiswa mSiswa = new ModelSiswa(tblSiswa);
