@@ -5,6 +5,9 @@
  */
 package frame;
 
+import javax.swing.table.DefaultTableModel;
+import java.sql.*;
+import koneksi.Konfig;
 /**
  *
  * @author USER
@@ -17,7 +20,15 @@ public class Siswa extends javax.swing.JFrame {
     public Siswa() {
         initComponents();
     }
-
+    
+    public void tampilSiswa(){
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("NIS");
+        model.addColumn("NAMA");
+        model.addColumn("KELAS");
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,7 +38,7 @@ public class Siswa extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        btnKembali = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
@@ -35,7 +46,7 @@ public class Siswa extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         tfNama = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        cmKelas = new javax.swing.JComboBox<String>();
+        cmKelas = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         btnSimpan = new javax.swing.JButton();
@@ -47,10 +58,10 @@ public class Siswa extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Kembali");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnKembali.setText("Kembali");
+        btnKembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnKembaliActionPerformed(evt);
             }
         });
 
@@ -63,7 +74,7 @@ public class Siswa extends javax.swing.JFrame {
 
         jLabel4.setText("KELAS");
 
-        cmKelas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12 TKJ 1", "12 TKJ 2", "12 TKJ 3", "12 RPL" }));
+        cmKelas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "12 TKJ 1", "12 TKJ 2", "12 TKJ 3", "12 RPL" }));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -135,7 +146,7 @@ public class Siswa extends javax.swing.JFrame {
                             .addComponent(jLabel5)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                .addComponent(btnKembali, javax.swing.GroupLayout.Alignment.TRAILING)))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -152,7 +163,7 @@ public class Siswa extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1))
+                        .addComponent(btnKembali))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -181,10 +192,10 @@ public class Siswa extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKembaliActionPerformed
         this.dispose();
         new Menu().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnKembaliActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
@@ -234,9 +245,9 @@ public class Siswa extends javax.swing.JFrame {
     private javax.swing.JButton btnCetak;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnHapus;
+    private javax.swing.JButton btnKembali;
     private javax.swing.JButton btnSimpan;
     private javax.swing.JComboBox<String> cmKelas;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
