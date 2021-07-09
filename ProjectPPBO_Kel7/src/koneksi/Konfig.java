@@ -9,7 +9,7 @@ public class Konfig {
     private static Connection MySQLConfig;
     public static Connection configDB()throws SQLException{
         try {
-            String url="jdbc:mysql://localhost:3309/projectppbo"; //url database
+            String url="jdbc:mysql://localhost:3309/project_ppbo"; //url database
             String user="root"; //user database
             String pass=""; //password database
             
