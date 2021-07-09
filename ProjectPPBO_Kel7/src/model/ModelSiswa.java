@@ -45,11 +45,11 @@ public class ModelSiswa {
     }
     
     public void inputSiswa(String nis, String nama, String kelas){
+        System.out.println(nis);
         try{
-            String sql = "INSERT INTO siswa VALUES("
-                    + "nis='" + nis + "',"
-                    + "nama='" + nama + "',"
-                    + "kelas='" + kelas + "')";
+            String sql = "INSERT INTO siswa VALUES('"+nis+"',"
+                    +"'"+nama+"',"
+                    +"'"+kelas+"')";
             java.sql.Connection conn = (Connection) Konfig.configDB();
             java.sql.PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.execute();
@@ -57,6 +57,34 @@ public class ModelSiswa {
             tampilSiswa();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error: "+e);
+        }
+    }
+    
+    public void editSiswa(String nis, String nama, String kelas){
+        try{
+            String sql = "UPDATE siswa SET nama='"+nama+"',"
+                    +"kelas='"+kelas+"'"
+                    +"WHERE nis='"+nis+"'";
+            java.sql.Connection conn = (Connection)Konfig.configDB();
+            java.sql.PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.execute();
+            JOptionPane.showMessageDialog(null, "Update data berhasil");
+            tampilSiswa();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
+    
+    public void hapusSiswa(String nis){
+        try{
+            String sql = "DELETE FROM siswa WHERE nis='"+nis+"'";
+            java.sql.Connection conn = (Connection)Konfig.configDB();
+            java.sql.PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.execute();
+            JOptionPane.showMessageDialog(null, "Hapus data berhasil");
+            tampilSiswa();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
 }

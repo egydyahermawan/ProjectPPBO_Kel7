@@ -15,8 +15,14 @@ public class Siswa extends javax.swing.JFrame {
     
     public Siswa() {
         initComponents();
-        ModelSiswa mSiswa = new ModelSiswa(tblSiswa);
+        this.mSiswa = new ModelSiswa(tblSiswa);
         mSiswa.tampilSiswa();
+    }
+    
+    public void kosongForm(){
+        tfNis.setText("");
+        tfNama.setText("");
+        cmKelas.setSelectedIndex(0);
     }
     
     /**
@@ -74,6 +80,11 @@ public class Siswa extends javax.swing.JFrame {
         });
 
         btnBatal.setText("Batal");
+        btnBatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBatalActionPerformed(evt);
+            }
+        });
 
         btnEdit.setText("Edit");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -83,6 +94,11 @@ public class Siswa extends javax.swing.JFrame {
         });
 
         btnHapus.setText("Hapus");
+        btnHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusActionPerformed(evt);
+            }
+        });
 
         btnCetak.setText("Cetak");
         btnCetak.addActionListener(new java.awt.event.ActionListener() {
@@ -105,6 +121,11 @@ public class Siswa extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblSiswa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblSiswaMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblSiswa);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -196,7 +217,11 @@ public class Siswa extends javax.swing.JFrame {
     }//GEN-LAST:event_btnKembaliActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-        // TODO add your handling code here:
+        String nis = tfNis.getText();
+        String nama = tfNama.getText();
+        String kelas = cmKelas.getSelectedItem().toString();
+        mSiswa.editSiswa(nis, nama, kelas);
+        kosongForm();
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakActionPerformed
@@ -207,10 +232,32 @@ public class Siswa extends javax.swing.JFrame {
         String nis = tfNis.getText();
         String nama = tfNama.getText();
         String kelas = cmKelas.getSelectedItem().toString();
-        System.out.println(nis + nama + kelas);
-        mSiswa = new ModelSiswa(tblSiswa);
         mSiswa.inputSiswa(nis, nama, kelas);
     }//GEN-LAST:event_btnSimpanActionPerformed
+
+    private void tblSiswaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSiswaMouseClicked
+        tfNis.setEditable(false);
+        int row = tblSiswa.rowAtPoint(evt.getPoint());
+        
+        String nis = tblSiswa.getValueAt(row, 0).toString();
+        tfNis.setText(nis);
+        
+        String nama = tblSiswa.getValueAt(row, 1).toString();
+        tfNama.setText(nama);
+        
+        String kelas = tblSiswa.getValueAt(row, 2).toString();
+        cmKelas.setSelectedItem(kelas);
+    }//GEN-LAST:event_tblSiswaMouseClicked
+
+    private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
+        kosongForm();
+    }//GEN-LAST:event_btnBatalActionPerformed
+
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
+        String nis = tfNis.getText();
+        mSiswa.hapusSiswa(nis);
+        kosongForm();
+    }//GEN-LAST:event_btnHapusActionPerformed
 
     /**
      * @param args the command line arguments
