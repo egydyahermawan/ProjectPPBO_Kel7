@@ -40,7 +40,7 @@ public class Menu extends javax.swing.JFrame {
         btnNilai = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         btnNilaiAkhir = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btnKeluar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
 
@@ -75,6 +75,11 @@ public class Menu extends javax.swing.JFrame {
         jLabel5.setText("Lihat dan olah data nilai siswa");
 
         btnNilai.setText("Data Nilai");
+        btnNilai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNilaiActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Lihat nilai akhir siswa");
 
@@ -85,10 +90,10 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setText("Keluar");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnKeluar.setText("Keluar");
+        btnKeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnKeluarActionPerformed(evt);
             }
         });
 
@@ -128,7 +133,7 @@ public class Menu extends javax.swing.JFrame {
                         .addGap(0, 30, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton6)
+                .addComponent(btnKeluar)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -162,7 +167,7 @@ public class Menu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnNilaiAkhir)
                 .addGap(18, 18, 18)
-                .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnKeluar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -180,9 +185,9 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeluarActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_btnKeluarActionPerformed
 
     private void btnNilaiAkhirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNilaiAkhirActionPerformed
         new NilaiAkhir().setVisible(true);
@@ -190,13 +195,19 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNilaiAkhirActionPerformed
 
     private void btnMapelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMapelActionPerformed
-        // TODO add your handling code here:
+        new Matapelajaran().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnMapelActionPerformed
 
     private void btnSiswaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiswaActionPerformed
         new Siswa().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnSiswaActionPerformed
+
+    private void btnNilaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNilaiActionPerformed
+        new NilaiSiswa().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnNilaiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -234,12 +245,12 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnKeluar;
     private javax.swing.JButton btnMapel;
     private javax.swing.JButton btnNilai;
     private javax.swing.JButton btnNilaiAkhir;
     private javax.swing.JButton btnSiswa;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
