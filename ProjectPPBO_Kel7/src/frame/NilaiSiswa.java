@@ -5,17 +5,23 @@
  */
 package frame;
 
+import model.ModelNilai;
 /**
  *
  * @author LENOVO
  */
 public class NilaiSiswa extends javax.swing.JFrame {
+ModelNilai nilaiSiswa;
 
-    /**
-     * Creates new form NilaiSiswa
-     */
     public NilaiSiswa() {
         initComponents();
+        this.nilaiSiswa = new ModelNilai(tabelNilai);
+        nilaiSiswa.tampilNilai();
+    }
+ public void kosongForm(){
+        nis.setText("");
+        kodeMapel.setText("");
+        tfNilai.setText("");
     }
 
     /**
@@ -29,20 +35,20 @@ public class NilaiSiswa extends javax.swing.JFrame {
 
         jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        nis = new javax.swing.JTextField();
+        kodeMapel = new javax.swing.JTextField();
+        tfNilai = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton5 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        tabelNilai = new javax.swing.JTable();
+        btnCetak = new javax.swing.JButton();
+        btnSimpan = new javax.swing.JButton();
+        btnHapus = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
+        btnBatal = new javax.swing.JButton();
+        btnKembali = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -59,7 +65,7 @@ public class NilaiSiswa extends javax.swing.JFrame {
 
         jLabel4.setText("Nilai Siswa");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelNilai.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -70,29 +76,44 @@ public class NilaiSiswa extends javax.swing.JFrame {
                 "NIS", "Kode Mata Pelajaran", "Nilai"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabelNilai);
 
-        jButton5.setText("Cetak");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnCetak.setText("Cetak");
+        btnCetak.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnCetakActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Simpan");
-
-        jButton2.setText("Hapus");
-
-        jButton3.setText("Edit");
-
-        jButton4.setText("Batal");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnSimpan.setText("Simpan");
+        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnSimpanActionPerformed(evt);
             }
         });
 
-        jButton6.setText("Kembali");
+        btnHapus.setText("Hapus");
+        btnHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusActionPerformed(evt);
+            }
+        });
+
+        btnEdit.setText("Edit");
+
+        btnBatal.setText("Batal");
+        btnBatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBatalActionPerformed(evt);
+            }
+        });
+
+        btnKembali.setText("Kembali");
+        btnKembali.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKembaliActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Daftar Nilai Siswa");
@@ -119,29 +140,29 @@ public class NilaiSiswa extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField1))
+                                            .addComponent(kodeMapel, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(nis))
                                         .addGap(18, 18, 18))
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(tfNilai, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel1)
                                             .addComponent(jLabel3)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                 .addGroup(layout.createSequentialGroup()
                                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addComponent(btnBatal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                        .addComponent(btnHapus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(btnCetak, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                             .addComponent(jLabel4))))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(306, 306, 306)
-                                        .addComponent(jButton6))
+                                        .addComponent(btnKembali))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel5)
                                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -176,43 +197,60 @@ public class NilaiSiswa extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3)
                         .addGap(3, 3, 3)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(kodeMapel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tfNilai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2))
+                            .addComponent(btnSimpan)
+                            .addComponent(btnHapus))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3)
-                            .addComponent(jButton4))
+                            .addComponent(btnEdit)
+                            .addComponent(btnBatal))
                         .addGap(16, 16, 16)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton5)
-                            .addComponent(jButton6)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnCetak)
+                            .addComponent(btnKembali)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_btnCetakActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
+       kosongForm();
+    }//GEN-LAST:event_btnBatalActionPerformed
+
+    private void btnKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKembaliActionPerformed
+        this.dispose();
+        new Menu().setVisible(true);
+    }//GEN-LAST:event_btnKembaliActionPerformed
+
+    private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
+        String nissiswa = nis.getText();
+        String kode = kodeMapel.getText();
+        String nilai = tfNilai.getText();
+        nilaiSiswa.simpanMapel(nissiswa, kode, nilai);
+    }//GEN-LAST:event_btnSimpanActionPerformed
+
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
+        String nissiswa = nis.getText();
+        String kode = kodeMapel.getText();
+        nilaiSiswa.hapusNilai(nissiswa,kode);
+        kosongForm();
+    }//GEN-LAST:event_btnHapusActionPerformed
 
     /**
      * @param args the command line arguments
@@ -251,12 +289,12 @@ public class NilaiSiswa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton btnBatal;
+    private javax.swing.JButton btnCetak;
+    private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnHapus;
+    private javax.swing.JButton btnKembali;
+    private javax.swing.JButton btnSimpan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -267,9 +305,9 @@ public class NilaiSiswa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField kodeMapel;
+    private javax.swing.JTextField nis;
+    private javax.swing.JTable tabelNilai;
+    private javax.swing.JTextField tfNilai;
     // End of variables declaration//GEN-END:variables
 }
