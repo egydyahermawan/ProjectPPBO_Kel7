@@ -35,7 +35,7 @@ public class ModelMataPelajaran {
             System.out.println("Error message:" + e);
         }
     }
-      public void inputSiswa(String kode, String nama, String jam){
+      public void simpanMapel(String kode, String nama, String jam){
         try{
             String sql = "INSERT INTO mapel VALUES('"+kode+"',"
                     +"'"+nama+"',"
