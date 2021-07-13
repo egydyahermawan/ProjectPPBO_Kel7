@@ -27,7 +27,7 @@ public class ModelSiswa {
         model.addColumn("NAMA");
         model.addColumn("KELAS");
         try{
-            String sql = "SELECT * FROM siswa ORDER BY(nis)";
+            String sql = "SELECT * FROM siswa ORDER BY kelas";
             java.sql.Connection conn = (Connection) Konfig.configDB();
             java.sql.Statement stm = conn.createStatement();
             java.sql.ResultSet rst = stm.executeQuery(sql);
@@ -45,7 +45,6 @@ public class ModelSiswa {
     }
     
     public void inputSiswa(String nis, String nama, String kelas){
-        System.out.println(nis);
         try{
             String sql = "INSERT INTO siswa VALUES('"+nis+"',"
                     +"'"+nama+"',"

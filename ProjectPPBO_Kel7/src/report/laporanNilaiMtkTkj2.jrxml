@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9b45e233-cc19-4270-acd2-921742ac2247">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT s.nis, s.nama, m.kode_mapel, m.nama_mapel, n.nilai
+FROM siswa s, mapel m, nilai n
+WHERE s.nis = n.nis AND m.kode_mapel = n.kode_mapel AND
+n.nis IN (SELECT nis FROM siswa WHERE kelas = '12 TKJ 2') AND
+n.kode_mapel IN (SELECT kode_mapel FROM mapel WHERE nama_mapel = 'Matematika')]]>
+	</queryString>
+	<field name="nama" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_mapel" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nilai" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="94" splitType="Stretch">
+			<image>
+				<reportElement uuid="3cb155bb-abe5-4c19-8e41-6536aa099e4e" x="0" y="-1" width="80" height="80"/>
+				<imageExpression><![CDATA["D:\\Kuliah Egy\\Semester 2\\PBO\\ProjectPPBO_Kel7\\ProjectPPBO_Kel7\\src\\images\\logoSmk2.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="33e9b685-5529-4dac-bf28-1276f3d02f83" x="151" y="0" width="276" height="28"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SMK NEGRI 2 PEKANBARU]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7cd1c858-7937-4df1-b299-f9087253f5dc" x="158" y="28" width="265" height="41"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Jalan Patimura No. 14, Kel. Cinta Raja, Kec. Sail, Kota Pekanbaru, Riau]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement uuid="2533ac4c-7a3c-4fc4-9c31-56528c12b06d" x="209" y="69" width="160" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="56" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="e53743c4-c7b3-4f4c-8fc5-e5fbb5c7e892" x="0" y="23" width="555" height="33"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Daftar Nilai Mata Pelajaran Matematika Kelas 12 TKJ 2]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="cbbb49ac-2396-4241-9d0d-57554619c061" mode="Opaque" x="113" y="0" width="128" height="20" backcolor="#CCCCCC"/>
+				<box leftPadding="8" rightPadding="8"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[NAMA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7715828e-ebda-410a-bbb5-515ac43b6571" mode="Opaque" x="240" y="0" width="119" height="20" backcolor="#CCCCCC"/>
+				<box leftPadding="8" rightPadding="8"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[MATA PELAJARAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c830e866-b319-4be1-bbae-50082f31f028" mode="Opaque" x="358" y="0" width="83" height="20" backcolor="#CCCCCC"/>
+				<box leftPadding="8" rightPadding="8"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[NILAI]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="2337626c-a1ba-42f2-8636-245b37f7c0f3" x="113" y="0" width="127" height="20"/>
+				<box leftPadding="8" rightPadding="8">
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6c727f09-c852-4875-bb86-474db6f1e627" x="240" y="0" width="119" height="20"/>
+				<box leftPadding="8" rightPadding="8">
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nama_mapel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="69e1b8cd-c867-4c84-8a3d-4a101b641479" x="359" y="0" width="82" height="20"/>
+				<box leftPadding="8" rightPadding="8">
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nilai}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

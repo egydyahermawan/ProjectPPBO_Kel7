@@ -23,6 +23,7 @@ public class Siswa extends javax.swing.JFrame {
         initComponents();
         this.mSiswa = new ModelSiswa(tblSiswa);
         mSiswa.tampilSiswa();
+        kosongForm();
     }
     
     public void kosongForm(){
@@ -275,6 +276,7 @@ public class Siswa extends javax.swing.JFrame {
         String nama = tfNama.getText();
         String kelas = cmKelas.getSelectedItem().toString();
         mSiswa.inputSiswa(nis, nama, kelas);
+        kosongForm();
     }//GEN-LAST:event_btnSimpanActionPerformed
 
     private void tblSiswaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSiswaMouseClicked

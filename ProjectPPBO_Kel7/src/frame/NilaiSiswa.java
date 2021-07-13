@@ -5,11 +5,15 @@
  */
 package frame;
 
+import java.io.InputStream;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import koneksi.Konfig;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -25,17 +29,7 @@ public class NilaiSiswa extends javax.swing.JFrame {
         tfKodeMapel.setVisible(false);
         kosongForm();
     }
-    
-    public void setTabel(){
-        JTable tblMapel[] = {
-          tblMtkRpl, tblBingRpl, tblBindoRpl,
-          tblMtkTkj1, tblBingTkj1, tblBindoTkj1,
-          tblMtkTkj2, tblBingTkj2, tblBindoTkj2,
-          tblMtkTkj3, tblBingTkj3, tblBindoTkj3
-        };
-        
-    }
-    
+   
     public void kosongForm(){
         tfNama.setText("");
         cmMapel.setSelectedIndex(0);
@@ -659,13 +653,13 @@ public class NilaiSiswa extends javax.swing.JFrame {
         btnHapus = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
         btnBatal = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btnKembali = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblNama = new javax.swing.JTable();
-        cmMapel = new javax.swing.JComboBox<String>();
+        cmMapel = new javax.swing.JComboBox<>();
         tfNis = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         tfKodeMapel = new javax.swing.JTextField();
@@ -675,46 +669,57 @@ public class NilaiSiswa extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblMtkTkj1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        btnCetakMtkTkj1 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblBingTkj1 = new javax.swing.JTable();
+        btnBingTkj1 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         tblBindoTkj1 = new javax.swing.JTable();
+        btnBindoTkj1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         tabMapelTkj2 = new javax.swing.JTabbedPane();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         tblMtkTkj2 = new javax.swing.JTable();
+        btnMtkTkj2 = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         tblBingTkj2 = new javax.swing.JTable();
+        btnBingTkj2 = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane8 = new javax.swing.JScrollPane();
         tblBindoTkj2 = new javax.swing.JTable();
+        btnBindoTkj2 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         tabMapelTkj3 = new javax.swing.JTabbedPane();
         jPanel11 = new javax.swing.JPanel();
         jScrollPane9 = new javax.swing.JScrollPane();
         tblMtkTkj3 = new javax.swing.JTable();
+        btnMtkTkj3 = new javax.swing.JButton();
         jPanel12 = new javax.swing.JPanel();
         jScrollPane10 = new javax.swing.JScrollPane();
         tblBingTkj3 = new javax.swing.JTable();
+        btnBingTkj3 = new javax.swing.JButton();
         jPanel13 = new javax.swing.JPanel();
         jScrollPane11 = new javax.swing.JScrollPane();
         tblBindoTkj3 = new javax.swing.JTable();
+        btnBindoTkj3 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         tabMapelRpl = new javax.swing.JTabbedPane();
         jPanel14 = new javax.swing.JPanel();
         jScrollPane12 = new javax.swing.JScrollPane();
         tblMtkRpl = new javax.swing.JTable();
+        btnMtkRpl = new javax.swing.JButton();
         jPanel15 = new javax.swing.JPanel();
         jScrollPane13 = new javax.swing.JScrollPane();
         tblBingRpl = new javax.swing.JTable();
+        btnBingRpl = new javax.swing.JButton();
         jPanel16 = new javax.swing.JPanel();
         jScrollPane14 = new javax.swing.JScrollPane();
         tblBindoRpl = new javax.swing.JTable();
+        btnBindoRpl = new javax.swing.JButton();
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -775,10 +780,10 @@ public class NilaiSiswa extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setText("Kembali");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnKembali.setText("Kembali");
+        btnKembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnKembaliActionPerformed(evt);
             }
         });
 
@@ -808,7 +813,7 @@ public class NilaiSiswa extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tblNama);
 
-        cmMapel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Matematika", "Bahasa Inggris", "Bahasa Indonesia" }));
+        cmMapel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Matematika", "Bahasa Inggris", "Bahasa Indonesia" }));
 
         jLabel9.setText("Pilih Siswa");
 
@@ -836,7 +841,12 @@ public class NilaiSiswa extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblMtkTkj1);
 
-        jButton1.setText("Cetak");
+        btnCetakMtkTkj1.setText("Cetak");
+        btnCetakMtkTkj1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCetakMtkTkj1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -848,16 +858,16 @@ public class NilaiSiswa extends javax.swing.JFrame {
                     .addComponent(jScrollPane1)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                        .addComponent(btnCetakMtkTkj1)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(btnCetakMtkTkj1)
                 .addContainerGap())
         );
 
@@ -881,20 +891,33 @@ public class NilaiSiswa extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(tblBingTkj1);
 
+        btnBingTkj1.setText("Cetak");
+        btnBingTkj1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBingTkj1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnBingTkj1)))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(btnBingTkj1)
                 .addContainerGap())
         );
 
@@ -918,21 +941,34 @@ public class NilaiSiswa extends javax.swing.JFrame {
         });
         jScrollPane5.setViewportView(tblBindoTkj1);
 
+        btnBindoTkj1.setText("Cetak");
+        btnBindoTkj1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBindoTkj1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane5)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnBindoTkj1)))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(btnBindoTkj1)
+                .addContainerGap())
         );
 
         tabMapelTkj1.addTab("Bahasa Indonesia", jPanel7);
@@ -974,6 +1010,13 @@ public class NilaiSiswa extends javax.swing.JFrame {
         });
         jScrollPane6.setViewportView(tblMtkTkj2);
 
+        btnMtkTkj2.setText("Cetak");
+        btnMtkTkj2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMtkTkj2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -982,13 +1025,19 @@ public class NilaiSiswa extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnMtkTkj2)
+                .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addComponent(btnMtkTkj2)
+                .addContainerGap())
         );
 
         tabMapelTkj2.addTab("MTK", jPanel8);
@@ -1011,6 +1060,13 @@ public class NilaiSiswa extends javax.swing.JFrame {
         });
         jScrollPane7.setViewportView(tblBingTkj2);
 
+        btnBingTkj2.setText("Catak");
+        btnBingTkj2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBingTkj2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
@@ -1019,13 +1075,19 @@ public class NilaiSiswa extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnBingTkj2)
+                .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addComponent(btnBingTkj2)
+                .addContainerGap())
         );
 
         tabMapelTkj2.addTab("Bahasa Inggris", jPanel9);
@@ -1048,6 +1110,13 @@ public class NilaiSiswa extends javax.swing.JFrame {
         });
         jScrollPane8.setViewportView(tblBindoTkj2);
 
+        btnBindoTkj2.setText("Cetak");
+        btnBindoTkj2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBindoTkj2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
@@ -1056,13 +1125,19 @@ public class NilaiSiswa extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnBindoTkj2)
+                .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addComponent(btnBindoTkj2)
+                .addContainerGap())
         );
 
         tabMapelTkj2.addTab("Bahasa Indonesia", jPanel10);
@@ -1104,6 +1179,13 @@ public class NilaiSiswa extends javax.swing.JFrame {
         });
         jScrollPane9.setViewportView(tblMtkTkj3);
 
+        btnMtkTkj3.setText("Cetak");
+        btnMtkTkj3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMtkTkj3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
@@ -1112,13 +1194,19 @@ public class NilaiSiswa extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnMtkTkj3)
+                .addContainerGap())
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addComponent(btnMtkTkj3)
+                .addContainerGap())
         );
 
         tabMapelTkj3.addTab("MTK", jPanel11);
@@ -1141,6 +1229,13 @@ public class NilaiSiswa extends javax.swing.JFrame {
         });
         jScrollPane10.setViewportView(tblBingTkj3);
 
+        btnBingTkj3.setText("Cetak");
+        btnBingTkj3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBingTkj3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
@@ -1149,13 +1244,19 @@ public class NilaiSiswa extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnBingTkj3)
+                .addContainerGap())
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addComponent(btnBingTkj3)
+                .addContainerGap())
         );
 
         tabMapelTkj3.addTab("Bahasa Inggris", jPanel12);
@@ -1178,6 +1279,13 @@ public class NilaiSiswa extends javax.swing.JFrame {
         });
         jScrollPane11.setViewportView(tblBindoTkj3);
 
+        btnBindoTkj3.setText("Cetak");
+        btnBindoTkj3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBindoTkj3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
@@ -1186,13 +1294,18 @@ public class NilaiSiswa extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnBindoTkj3)
+                .addContainerGap())
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(btnBindoTkj3))
         );
 
         tabMapelTkj3.addTab("Bahasa Indonesia", jPanel13);
@@ -1234,21 +1347,34 @@ public class NilaiSiswa extends javax.swing.JFrame {
         });
         jScrollPane12.setViewportView(tblMtkRpl);
 
+        btnMtkRpl.setText("Cetak");
+        btnMtkRpl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMtkRplActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane12)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane12)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnMtkRpl)))
                 .addContainerGap())
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addComponent(btnMtkRpl)
+                .addContainerGap())
         );
 
         tabMapelRpl.addTab("MTK", jPanel14);
@@ -1271,6 +1397,13 @@ public class NilaiSiswa extends javax.swing.JFrame {
         });
         jScrollPane13.setViewportView(tblBingRpl);
 
+        btnBingRpl.setText("Cetak");
+        btnBingRpl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBingRplActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
         jPanel15Layout.setHorizontalGroup(
@@ -1279,13 +1412,19 @@ public class NilaiSiswa extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnBingRpl)
+                .addContainerGap())
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addComponent(btnBingRpl)
+                .addContainerGap())
         );
 
         tabMapelRpl.addTab("Bahasa Inggris", jPanel15);
@@ -1308,21 +1447,32 @@ public class NilaiSiswa extends javax.swing.JFrame {
         });
         jScrollPane14.setViewportView(tblBindoRpl);
 
+        btnBindoRpl.setText("Cetak");
+        btnBindoRpl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBindoRplActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
         jPanel16Layout.setHorizontalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
+            .addGroup(jPanel16Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBindoRpl, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addComponent(btnBindoRpl)
+                .addContainerGap())
         );
 
         tabMapelRpl.addTab("Bahasa Indonesia", jPanel16);
@@ -1362,7 +1512,7 @@ public class NilaiSiswa extends javax.swing.JFrame {
                             .addComponent(jLabel7)
                             .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 676, Short.MAX_VALUE)
-                        .addComponent(jButton6)
+                        .addComponent(btnKembali)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1450,7 +1600,7 @@ public class NilaiSiswa extends javax.swing.JFrame {
                         .addComponent(btnCetak))
                     .addComponent(tabKelas, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton6)
+                .addComponent(btnKembali)
                 .addContainerGap())
         );
 
@@ -1660,9 +1810,69 @@ public class NilaiSiswa extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfKodeMapelActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    private void btnKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKembaliActionPerformed
+        new Menu().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnKembaliActionPerformed
+
+    public void cetakLaporan(String url){
+        try{
+            InputStream is = NilaiSiswa.class.getResourceAsStream(url);
+            JasperPrint jsPrint = JasperFillManager.fillReport(is, null, Konfig.configDB());
+            JasperViewer.viewReport(jsPrint, false);
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Gagal mencetak laporan karena :"
+            + e.getMessage(), "Cetak Laporan", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    private void btnMtkRplActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMtkRplActionPerformed
+        cetakLaporan("/report/laporanNilaiMtkRpl.jasper");
+    }//GEN-LAST:event_btnMtkRplActionPerformed
+
+    private void btnBingRplActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBingRplActionPerformed
+        cetakLaporan("/report/laporanNilaiBingRpl.jasper");
+    }//GEN-LAST:event_btnBingRplActionPerformed
+
+    private void btnBindoRplActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBindoRplActionPerformed
+        cetakLaporan("/report/laporanNilaiBindoRpl.jasper");
+    }//GEN-LAST:event_btnBindoRplActionPerformed
+
+    private void btnCetakMtkTkj1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakMtkTkj1ActionPerformed
+        cetakLaporan("/report/laporanNilaiMtkTkj1.jasper");
+    }//GEN-LAST:event_btnCetakMtkTkj1ActionPerformed
+
+    private void btnBingTkj1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBingTkj1ActionPerformed
+        cetakLaporan("/report/laporanNilaiBingTkj1.jasper");
+    }//GEN-LAST:event_btnBingTkj1ActionPerformed
+
+    private void btnBindoTkj1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBindoTkj1ActionPerformed
+        cetakLaporan("/report/laporanNilaiBindoTkj1.jasper");
+    }//GEN-LAST:event_btnBindoTkj1ActionPerformed
+
+    private void btnMtkTkj2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMtkTkj2ActionPerformed
+        cetakLaporan("/report/laporanNilaiMtkTkj2.jasper");
+    }//GEN-LAST:event_btnMtkTkj2ActionPerformed
+
+    private void btnBingTkj2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBingTkj2ActionPerformed
+        cetakLaporan("/report/laporanNilaiBingTkj2.jasper");
+    }//GEN-LAST:event_btnBingTkj2ActionPerformed
+
+    private void btnBindoTkj2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBindoTkj2ActionPerformed
+        cetakLaporan("/report/laporanNilaiBindoTkj2.jasper");
+    }//GEN-LAST:event_btnBindoTkj2ActionPerformed
+
+    private void btnMtkTkj3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMtkTkj3ActionPerformed
+        cetakLaporan("/report/laporanNilaiMtkTkj3.jasper");
+    }//GEN-LAST:event_btnMtkTkj3ActionPerformed
+
+    private void btnBingTkj3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBingTkj3ActionPerformed
+        cetakLaporan("/report/laporanNilaiBingTkj3.jasper");
+    }//GEN-LAST:event_btnBingTkj3ActionPerformed
+
+    private void btnBindoTkj3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBindoTkj3ActionPerformed
+        cetakLaporan("/report/laporanNilaiBindoTkj3.jasper");
+    }//GEN-LAST:event_btnBindoTkj3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1702,13 +1912,24 @@ public class NilaiSiswa extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBatal;
+    private javax.swing.JButton btnBindoRpl;
+    private javax.swing.JButton btnBindoTkj1;
+    private javax.swing.JButton btnBindoTkj2;
+    private javax.swing.JButton btnBindoTkj3;
+    private javax.swing.JButton btnBingRpl;
+    private javax.swing.JButton btnBingTkj1;
+    private javax.swing.JButton btnBingTkj2;
+    private javax.swing.JButton btnBingTkj3;
     private javax.swing.JButton btnCetak;
+    private javax.swing.JButton btnCetakMtkTkj1;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnHapus;
+    private javax.swing.JButton btnKembali;
+    private javax.swing.JButton btnMtkRpl;
+    private javax.swing.JButton btnMtkTkj2;
+    private javax.swing.JButton btnMtkTkj3;
     private javax.swing.JButton btnSimpan;
     private javax.swing.JComboBox<String> cmMapel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
