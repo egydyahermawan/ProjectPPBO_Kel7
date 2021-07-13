@@ -665,7 +665,7 @@ public class NilaiSiswa extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblNama = new javax.swing.JTable();
-        cmMapel = new javax.swing.JComboBox<>();
+        cmMapel = new javax.swing.JComboBox<String>();
         tfNis = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         tfKodeMapel = new javax.swing.JTextField();
@@ -776,6 +776,11 @@ public class NilaiSiswa extends javax.swing.JFrame {
         });
 
         jButton6.setText("Kembali");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logoSmk2.png"))); // NOI18N
 
@@ -803,7 +808,7 @@ public class NilaiSiswa extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tblNama);
 
-        cmMapel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Matematika", "Bahasa Inggris", "Bahasa Indonesia" }));
+        cmMapel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Matematika", "Bahasa Inggris", "Bahasa Indonesia" }));
 
         jLabel9.setText("Pilih Siswa");
 
@@ -1654,6 +1659,10 @@ public class NilaiSiswa extends javax.swing.JFrame {
     private void tfKodeMapelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfKodeMapelActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfKodeMapelActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments

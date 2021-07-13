@@ -4,7 +4,12 @@
  * and open the template in the editor.
  */
 package frame;
+
 import frame.NilaiSiswa;
+import java.sql.Connection;
+import javax.swing.table.DefaultTableModel;
+import koneksi.Konfig;
+
 /**
  *
  * @author USER
@@ -16,15 +21,149 @@ public class NilaiAkhir extends javax.swing.JFrame {
      */
     public NilaiAkhir() {
         initComponents();
-        
-    }
-    
-    public void NilaiALLSiswa(){
-        
+        NilaiALLSiswa();
+        NilaiSiswaRPL();
+        NilaiSiswaTKJ1();
+        NilaiSiswaTKJ2();
+        NilaiSiswaTKJ3();
     }
 
-   
-    @SuppressWarnings("unchecked")
+    public void NilaiALLSiswa() {
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("NAMA");
+        model.addColumn("KELAS");
+        model.addColumn("NILAI AKHIR");
+        try {
+            String sql = "SELECT s.nama,s.kelas,avg(nilai)\n"
+                    + "FROM siswa s, mapel m, nilai n\n"
+                    + "WHERE s.nis = n.nis AND m.kode_mapel = n.kode_mapel \n"
+                    + "GROUP by s.nis;";
+
+            java.sql.Connection conn = (Connection) Konfig.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet rst = stm.executeQuery(sql);
+            while (rst.next()) {
+                model.addRow(new Object[]{
+                    rst.getString(1),
+                    rst.getString(2),
+                    rst.getString(3)
+                });
+            }
+            tableALLSiswa.setModel(model);
+        } catch (Exception e) {
+            System.out.println("Error message:" + e);
+        }
+    }
+
+    public void NilaiSiswaRPL() {
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("NAMA");
+        model.addColumn("KELAS");
+        model.addColumn("NILAI AKHIR");
+        try {
+            String sql = "SELECT s.nama,s.kelas,avg(nilai)\n"
+                    + "FROM siswa s, mapel m, nilai n\n"
+                    + "WHERE s.nis = n.nis AND m.kode_mapel = n.kode_mapel AND\n"
+                    + "s.nis in(select nis from siswa where kelas like \"12 RPL\")\n"
+                    + "GROUP by s.nis;";
+            java.sql.Connection conn = (Connection) Konfig.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet rst = stm.executeQuery(sql);
+            while (rst.next()) {
+                model.addRow(new Object[]{
+                    rst.getString(1),
+                    rst.getString(2),
+                    rst.getString(3)
+                });
+            }
+            tableRPL.setModel(model);
+        }catch(Exception e){
+              System.out.println("Error message:" + e);
+         }
+
+        }
+ public void NilaiSiswaTKJ2() {
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("NAMA");
+        model.addColumn("KELAS");
+        model.addColumn("NILAI AKHIR");
+        try {
+            String sql = "SELECT s.nama,s.kelas,avg(nilai)\n"
+                    + "FROM siswa s, mapel m, nilai n\n"
+                    + "WHERE s.nis = n.nis AND m.kode_mapel = n.kode_mapel AND\n"
+                    + "s.nis in(select nis from siswa where kelas like \"12 TKJ 2\")\n"
+                    + "GROUP by s.nis;";
+            java.sql.Connection conn = (Connection) Konfig.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet rst = stm.executeQuery(sql);
+            while (rst.next()) {
+                model.addRow(new Object[]{
+                    rst.getString(1),
+                    rst.getString(2),
+                    rst.getString(3)
+                });
+            }
+            tableTKJ2.setModel(model);
+        }catch(Exception e){
+              System.out.println("Error message:" + e);
+         }
+
+        }
+ public void NilaiSiswaTKJ1() {
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("NAMA");
+        model.addColumn("KELAS");
+        model.addColumn("NILAI AKHIR");
+        try {
+            String sql = "SELECT s.nama,s.kelas,avg(nilai)\n"
+                    + "FROM siswa s, mapel m, nilai n\n"
+                    + "WHERE s.nis = n.nis AND m.kode_mapel = n.kode_mapel AND\n"
+                    + "s.nis in(select nis from siswa where kelas like \"12 TKJ 1\")\n"
+                    + "GROUP by s.nis;";
+            java.sql.Connection conn = (Connection) Konfig.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet rst = stm.executeQuery(sql);
+            while (rst.next()) {
+                model.addRow(new Object[]{
+                    rst.getString(1),
+                    rst.getString(2),
+                    rst.getString(3)
+                });
+            }
+            tableTKJ1.setModel(model);
+        }catch(Exception e){
+              System.out.println("Error message:" + e);
+         }
+
+        }
+ public void NilaiSiswaTKJ3() {
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("NAMA");
+        model.addColumn("KELAS");
+        model.addColumn("NILAI AKHIR");
+        try {
+            String sql = "SELECT s.nama,s.kelas,avg(nilai)\n"
+                    + "FROM siswa s, mapel m, nilai n\n"
+                    + "WHERE s.nis = n.nis AND m.kode_mapel = n.kode_mapel AND\n"
+                    + "s.nis in(select nis from siswa where kelas like \"12 TKJ 3\")\n"
+                    + "GROUP by s.nis;";
+            java.sql.Connection conn = (Connection) Konfig.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet rst = stm.executeQuery(sql);
+            while (rst.next()) {
+                model.addRow(new Object[]{
+                    rst.getString(1),
+                    rst.getString(2),
+                    rst.getString(3)
+                });
+            }
+            tableTKJ3.setModel(model);
+        }catch(Exception e){
+              System.out.println("Error message:" + e);
+         }
+
+        }
+        @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -42,15 +181,14 @@ public class NilaiAkhir extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         btnTKJ1 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableTKJ1 = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         btnTKJ2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableTKJ2 = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tableTKJ3 = new javax.swing.JTable();
         btnTKJ3 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         btnRPL = new javax.swing.JButton();
@@ -112,7 +250,7 @@ public class NilaiAkhir extends javax.swing.JFrame {
 
         btnTKJ1.setText("Cetak");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableTKJ1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -123,7 +261,7 @@ public class NilaiAkhir extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane4.setViewportView(jTable1);
+        jScrollPane4.setViewportView(tableTKJ1);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -190,9 +328,7 @@ public class NilaiAkhir extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("TKJ2", jPanel4);
 
-        jButton2.setText("jButton2");
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tableTKJ3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -203,7 +339,7 @@ public class NilaiAkhir extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tableTKJ3);
 
         btnTKJ3.setText("Cetak");
 
@@ -211,27 +347,22 @@ public class NilaiAkhir extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+            .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnTKJ3, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addComponent(btnTKJ3)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnTKJ3)
-                .addGap(13, 13, 13)
-                .addComponent(jButton2)
-                .addGap(58, 58, 58))
+                .addComponent(btnTKJ3))
         );
 
         jTabbedPane1.addTab("TKJ3", jPanel5);
@@ -316,6 +447,11 @@ public class NilaiAkhir extends javax.swing.JFrame {
         );
 
         jButton1.setText("Kembali");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -327,7 +463,7 @@ public class NilaiAkhir extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addGap(37, 37, 37))
+                .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -341,9 +477,14 @@ public class NilaiAkhir extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+        new Menu().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
-     * @param args the command line arguments
-     */
+         * @param args the command line arguments
+         */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -383,7 +524,6 @@ public class NilaiAkhir extends javax.swing.JFrame {
     private javax.swing.JButton btnTKJ2;
     private javax.swing.JButton btnTKJ3;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -401,10 +541,10 @@ public class NilaiAkhir extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable tableALLSiswa;
     private javax.swing.JTable tableRPL;
+    private javax.swing.JTable tableTKJ1;
     private javax.swing.JTable tableTKJ2;
+    private javax.swing.JTable tableTKJ3;
     // End of variables declaration//GEN-END:variables
 }
