@@ -15,34 +15,45 @@ import koneksi.Konfig;
  * @author USER
  */
 public class ModelSiswa {
-    JTable varTable;
+    JTable varTable[] =  new JTable[4];
+    DefaultTableModel model1, model2, model3, model4;
+    DefaultTableModel[] model = {
+        model1, model2, model3, model4
+    };
     
-    public ModelSiswa(JTable varTable){
-        this.varTable = varTable;
+    public ModelSiswa(JTable tblTkj1, JTable tblTkj2, JTable tblTkj3, JTable tblRpl){
+        this.varTable[0] = tblTkj1;
+        this.varTable[1] = tblTkj2;
+        this.varTable[2] = tblTkj3;
+        this.varTable[3] = tblRpl;
     }
     
-    public void tampilSiswa(){
-        DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("NIS");
-        model.addColumn("NAMA");
-        model.addColumn("KELAS");
+    public void tampilSiswa(String[] kelas){
+        for (int i = 0; i < model.length; i++) {
+            model[i] = new DefaultTableModel();
+        }
         try{
-            String sql = "SELECT * FROM siswa ORDER BY kelas";
-            java.sql.Connection conn = (Connection) Konfig.configDB();
-            java.sql.Statement stm = conn.createStatement();
-            java.sql.ResultSet rst = stm.executeQuery(sql);
-            while(rst.next()){
-                model.addRow(new Object[]{
+            for (int i = 0; i < model.length; i++) {
+                model[i].addColumn("NIS");
+                model[i].addColumn("NAMA");
+                model[i].addColumn("KELAS");
+                String sql = "SELECT * FROM siswa WHERE kelas = '"+kelas[i]+"' ORDER BY nama";
+                java.sql.Connection conn = (Connection) Konfig.configDB();
+                java.sql.Statement stm = conn.createStatement();
+                java.sql.ResultSet rst = stm.executeQuery(sql);
+                while(rst.next()){
+                model[i].addRow(new Object[]{
                     rst.getString(1),
                     rst.getString(2),
                     rst.getString(3)
-                });
+                    });
+                }
+                varTable[i].setModel(model[i]);  
             }
-            varTable.setModel(model);
         }catch(Exception e){
             System.out.println("Error message:" + e);
         }
-    }
+    } 
     
     public void inputSiswa(String nis, String nama, String kelas){
         try{
@@ -53,7 +64,6 @@ public class ModelSiswa {
             java.sql.PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.execute();
             JOptionPane.showMessageDialog(null, "Simpan data baru berhasil!");
-            tampilSiswa();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error: "+e);
         }
@@ -68,7 +78,6 @@ public class ModelSiswa {
             java.sql.PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.execute();
             JOptionPane.showMessageDialog(null, "Update data berhasil");
-            tampilSiswa();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -81,7 +90,6 @@ public class ModelSiswa {
             java.sql.PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.execute();
             JOptionPane.showMessageDialog(null, "Hapus data berhasil");
-            tampilSiswa();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e.getMessage());
         }

@@ -7,6 +7,7 @@ package frame;
 
 import java.io.InputStream;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import koneksi.Konfig;
 import model.ModelSiswa;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -18,11 +19,11 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public class Siswa extends javax.swing.JFrame {
     ModelSiswa mSiswa;
-    
+    String[] kelas = {"12 TKJ 1", "12 TKJ 2", "12 TKJ 3", "12 RPL"};
     public Siswa() {
         initComponents();
-        this.mSiswa = new ModelSiswa(tblSiswa);
-        mSiswa.tampilSiswa();
+        this.mSiswa = new ModelSiswa(tblTkj1, tblTkj2, tblTkj3, tblRpl);
+        mSiswa.tampilSiswa(this.kelas);
         kosongForm();
     }
     
@@ -56,11 +57,22 @@ public class Siswa extends javax.swing.JFrame {
         btnHapus = new javax.swing.JButton();
         btnCetak = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tblSiswa = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblTkj1 = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblTkj2 = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblTkj3 = new javax.swing.JTable();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tblRpl = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -120,7 +132,15 @@ public class Siswa extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Daftar Data Siswa");
 
-        tblSiswa.setModel(new javax.swing.table.DefaultTableModel(
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logoSmk2.png"))); // NOI18N
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel7.setText("Siswa");
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel8.setText("for Admin");
+
+        tblTkj1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -131,20 +151,142 @@ public class Siswa extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tblSiswa.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblTkj1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblSiswaMouseClicked(evt);
+                tblTkj1MouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(tblSiswa);
+        jScrollPane1.setViewportView(tblTkj1);
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logoSmk2.png"))); // NOI18N
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel7.setText("Siswa");
+        jTabbedPane1.addTab("12 TKJ 1", jPanel1);
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel8.setText("for Admin");
+        tblTkj2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tblTkj2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblTkj2MouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tblTkj2);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("12 TKJ 2", jPanel2);
+
+        tblTkj3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tblTkj3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblTkj3MouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tblTkj3);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("12 TKJ 3", jPanel3);
+
+        tblRpl.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tblRpl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblRplMouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(tblRpl);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("12 RPL", jPanel4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -169,7 +311,7 @@ public class Siswa extends javax.swing.JFrame {
                                             .addComponent(jLabel3)
                                             .addComponent(jLabel4)
                                             .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(tfNis, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(tfNama, javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,14 +319,14 @@ public class Siswa extends javax.swing.JFrame {
                                         .addComponent(cmKelas, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, Short.MAX_VALUE)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnKembali))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(27, 27, 27)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel5)
-                                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnKembali))))
+                                            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel5)))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -207,16 +349,10 @@ public class Siswa extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel8))
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37)
-                        .addComponent(btnKembali))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -236,9 +372,19 @@ public class Siswa extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnEdit)
-                            .addComponent(btnHapus))
+                            .addComponent(btnHapus)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(3, 3, 3)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(btnCetak)))
+                        .addComponent(btnCetak))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(btnKembali)))
                 .addContainerGap())
         );
 
@@ -255,6 +401,7 @@ public class Siswa extends javax.swing.JFrame {
         String nama = tfNama.getText();
         String kelas = cmKelas.getSelectedItem().toString();
         mSiswa.editSiswa(nis, nama, kelas);
+        mSiswa.tampilSiswa(this.kelas);
         kosongForm();
     }//GEN-LAST:event_btnEditActionPerformed
 
@@ -276,21 +423,9 @@ public class Siswa extends javax.swing.JFrame {
         String nama = tfNama.getText();
         String kelas = cmKelas.getSelectedItem().toString();
         mSiswa.inputSiswa(nis, nama, kelas);
+        mSiswa.tampilSiswa(this.kelas);
         kosongForm();
     }//GEN-LAST:event_btnSimpanActionPerformed
-
-    private void tblSiswaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSiswaMouseClicked
-        int row = tblSiswa.rowAtPoint(evt.getPoint());
-        
-        String nis = tblSiswa.getValueAt(row, 0).toString();
-        tfNis.setText(nis);
-        
-        String nama = tblSiswa.getValueAt(row, 1).toString();
-        tfNama.setText(nama);
-        
-        String kelas = tblSiswa.getValueAt(row, 2).toString();
-        cmKelas.setSelectedItem(kelas);
-    }//GEN-LAST:event_tblSiswaMouseClicked
 
     private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
         kosongForm();
@@ -299,8 +434,37 @@ public class Siswa extends javax.swing.JFrame {
     private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
         String nis = tfNis.getText();
         mSiswa.hapusSiswa(nis);
+        mSiswa.tampilSiswa(this.kelas);
         kosongForm();
     }//GEN-LAST:event_btnHapusActionPerformed
+
+    public void clickedTable(JTable varTable, java.awt.event.MouseEvent evt){
+        int row = varTable.rowAtPoint(evt.getPoint());
+        String nis = varTable.getValueAt(row, 0).toString();
+        tfNis.setText(nis);
+        
+        String nama = varTable.getValueAt(row, 1).toString();
+        tfNama.setText(nama);
+        
+        String kelas = varTable.getValueAt(row, 2).toString();
+        cmKelas.setSelectedItem(kelas);
+    }
+    
+    private void tblTkj1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTkj1MouseClicked
+        clickedTable(tblTkj1, evt);
+    }//GEN-LAST:event_tblTkj1MouseClicked
+
+    private void tblTkj2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTkj2MouseClicked
+        clickedTable(tblTkj2, evt);
+    }//GEN-LAST:event_tblTkj2MouseClicked
+
+    private void tblTkj3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTkj3MouseClicked
+        clickedTable(tblTkj3, evt);
+    }//GEN-LAST:event_tblTkj3MouseClicked
+
+    private void tblRplMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblRplMouseClicked
+        clickedTable(tblRpl, evt);
+    }//GEN-LAST:event_tblRplMouseClicked
 
     /**
      * @param args the command line arguments
@@ -332,7 +496,7 @@ public class Siswa extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-//                new Siswa().setVisible(true);
+                new Siswa().setVisible(true);
             }
         });
     }
@@ -353,9 +517,20 @@ public class Siswa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable tblSiswa;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable tblRpl;
+    private javax.swing.JTable tblTkj1;
+    private javax.swing.JTable tblTkj2;
+    private javax.swing.JTable tblTkj3;
     private javax.swing.JTextField tfNama;
     private javax.swing.JTextField tfNis;
     // End of variables declaration//GEN-END:variables

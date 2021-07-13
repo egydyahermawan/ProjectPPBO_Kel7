@@ -1637,173 +1637,67 @@ public class NilaiSiswa extends javax.swing.JFrame {
         editDataNilai();
     }//GEN-LAST:event_btnEditActionPerformed
 
-    private void tblMtkRplMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMtkRplMouseClicked
-        int row = tblMtkRpl.rowAtPoint(evt.getPoint());
+    public void clickedTable(JTable varTable, java.awt.event.MouseEvent evt){
+        int row = varTable.rowAtPoint(evt.getPoint());
         
-        String nis = tblMtkRpl.getValueAt(row, 0).toString();
+        String nis = varTable.getValueAt(row, 0).toString();
         tfNis.setText(nis);
-        String nama = tblMtkRpl.getValueAt(row, 1).toString();
+        String nama = varTable.getValueAt(row, 1).toString();
         tfNama.setText(nama);
-        String kode_mapel = tblMtkRpl.getValueAt(row, 2).toString();
+        String kode_mapel = varTable.getValueAt(row, 2).toString();
         tfKodeMapel.setText(kode_mapel);
-        String mapel = tblMtkRpl.getValueAt(row, 3).toString();
+        String mapel = varTable.getValueAt(row, 3).toString();
         cmMapel.setSelectedItem(mapel);
-        String nilai = tblMtkRpl.getValueAt(row, 4).toString();
+        String nilai = varTable.getValueAt(row, 4).toString();
         tfNilai.setText(nilai);
+    }
+    
+    private void tblMtkRplMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMtkRplMouseClicked
+        clickedTable(tblMtkRpl, evt);
     }//GEN-LAST:event_tblMtkRplMouseClicked
 
     private void tblBingRplMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBingRplMouseClicked
-        int row = tblBingRpl.rowAtPoint(evt.getPoint());
-        String nis = tblBingRpl.getValueAt(row, 0).toString();
-        tfNis.setText(nis);
-        String nama = tblBingRpl.getValueAt(row, 1).toString();
-        tfNama.setText(nama);
-        String kode_mapel = tblBingRpl.getValueAt(row, 2).toString();
-        tfKodeMapel.setText(kode_mapel);
-        String mapel = tblBingRpl.getValueAt(row, 3).toString();
-        cmMapel.setSelectedItem(mapel);
-        String nilai = tblBingRpl.getValueAt(row, 4).toString();
-        tfNilai.setText(nilai);
+        clickedTable(tblBingRpl, evt);
     }//GEN-LAST:event_tblBingRplMouseClicked
 
     private void tblBindoRplMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBindoRplMouseClicked
-        int row = tblBindoRpl.rowAtPoint(evt.getPoint());
-        String nis = tblBindoRpl.getValueAt(row, 0).toString();
-        tfNis.setText(nis);
-        String nama = tblBindoRpl.getValueAt(row, 1).toString();
-        tfNama.setText(nama);
-        String kode_mapel = tblBindoRpl.getValueAt(row, 2).toString();
-        tfKodeMapel.setText(kode_mapel);
-        String mapel = tblBindoRpl.getValueAt(row, 3).toString();
-        cmMapel.setSelectedItem(mapel);
-        String nilai = tblBindoRpl.getValueAt(row, 4).toString();
-        tfNilai.setText(nilai);
+        clickedTable(tblBindoRpl, evt);
     }//GEN-LAST:event_tblBindoRplMouseClicked
 
     private void tblMtkTkj3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMtkTkj3MouseClicked
-        int row = tblMtkTkj3.rowAtPoint(evt.getPoint());
-        String nis = tblMtkTkj3.getValueAt(row, 0).toString();
-        tfNis.setText(nis);
-        String nama = tblMtkTkj3.getValueAt(row, 1).toString();
-        tfNama.setText(nama);
-        String kode_mapel = tblMtkTkj3.getValueAt(row, 2).toString();
-        tfKodeMapel.setText(kode_mapel);
-        String mapel = tblMtkTkj3.getValueAt(row, 3).toString();
-        cmMapel.setSelectedItem(mapel);
-        String nilai = tblMtkTkj3.getValueAt(row, 4).toString();
-        tfNilai.setText(nilai);
+        clickedTable(tblMtkTkj3, evt);
     }//GEN-LAST:event_tblMtkTkj3MouseClicked
 
     private void tblBingTkj3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBingTkj3MouseClicked
-        int row = tblBingTkj3.rowAtPoint(evt.getPoint());
-        String nis = tblBingTkj3.getValueAt(row, 0).toString();
-        tfNis.setText(nis);
-        String nama = tblBingTkj3.getValueAt(row, 1).toString();
-        tfNama.setText(nama);
-        String kode_mapel = tblBingTkj3.getValueAt(row, 2).toString();
-        tfKodeMapel.setText(kode_mapel);
-        String mapel = tblBingTkj3.getValueAt(row, 3).toString();
-        cmMapel.setSelectedItem(mapel);
-        String nilai = tblBingTkj3.getValueAt(row, 4).toString();
-        tfNilai.setText(nilai);
+        clickedTable(tblBingTkj3, evt);
     }//GEN-LAST:event_tblBingTkj3MouseClicked
 
     private void tblBindoTkj3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBindoTkj3MouseClicked
-        int row = tblBindoTkj3.rowAtPoint(evt.getPoint());
-        String nis = tblBindoTkj3.getValueAt(row, 0).toString();
-        tfNis.setText(nis);
-        String nama = tblBindoTkj3.getValueAt(row, 1).toString();
-        tfNama.setText(nama);
-        String kode_mapel = tblBindoTkj3.getValueAt(row, 2).toString();
-        tfKodeMapel.setText(kode_mapel);
-        String mapel = tblBindoTkj3.getValueAt(row, 3).toString();
-        cmMapel.setSelectedItem(mapel);
-        String nilai = tblBindoTkj3.getValueAt(row, 4).toString();
-        tfNilai.setText(nilai);
+        clickedTable(tblBindoTkj3, evt);
     }//GEN-LAST:event_tblBindoTkj3MouseClicked
 
     private void tblMtkTkj2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMtkTkj2MouseClicked
-        int row = tblMtkTkj2.rowAtPoint(evt.getPoint());
-        String nis = tblMtkTkj2.getValueAt(row, 0).toString();
-        tfNis.setText(nis);
-        String nama = tblMtkTkj2.getValueAt(row, 1).toString();
-        tfNama.setText(nama);
-        String kode_mapel = tblMtkTkj2.getValueAt(row, 2).toString();
-        tfKodeMapel.setText(kode_mapel);
-        String mapel = tblMtkTkj2.getValueAt(row, 3).toString();
-        cmMapel.setSelectedItem(mapel);
-        String nilai = tblMtkTkj2.getValueAt(row, 4).toString();
-        tfNilai.setText(nilai);
+        clickedTable(tblMtkTkj2, evt);
     }//GEN-LAST:event_tblMtkTkj2MouseClicked
 
     private void tblBingTkj2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBingTkj2MouseClicked
-        int row = tblBingTkj2.rowAtPoint(evt.getPoint());
-        String nis = tblBingTkj2.getValueAt(row, 0).toString();
-        tfNis.setText(nis);
-        String nama = tblBingTkj2.getValueAt(row, 1).toString();
-        tfNama.setText(nama);
-        String kode_mapel = tblBingTkj2.getValueAt(row, 2).toString();
-        tfKodeMapel.setText(kode_mapel);
-        String mapel = tblBingTkj2.getValueAt(row, 3).toString();
-        cmMapel.setSelectedItem(mapel);
-        String nilai = tblBingTkj2.getValueAt(row, 4).toString();
-        tfNilai.setText(nilai);
+        clickedTable(tblBingTkj2, evt);
     }//GEN-LAST:event_tblBingTkj2MouseClicked
 
     private void tblBindoTkj2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBindoTkj2MouseClicked
-        int row = tblBindoTkj2.rowAtPoint(evt.getPoint());
-        String nis = tblBindoTkj2.getValueAt(row, 0).toString();
-        tfNis.setText(nis);
-        String nama = tblBindoTkj2.getValueAt(row, 1).toString();
-        tfNama.setText(nama);
-        String kode_mapel = tblBindoTkj2.getValueAt(row, 2).toString();
-        tfKodeMapel.setText(kode_mapel);
-        String mapel = tblBindoTkj2.getValueAt(row, 3).toString();
-        cmMapel.setSelectedItem(mapel);
-        String nilai = tblBindoTkj2.getValueAt(row, 4).toString();
-        tfNilai.setText(nilai);
+        clickedTable(tblBindoTkj2, evt);
     }//GEN-LAST:event_tblBindoTkj2MouseClicked
 
     private void tblMtkTkj1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMtkTkj1MouseClicked
-        int row = tblMtkTkj1.rowAtPoint(evt.getPoint());
-        String nis = tblMtkTkj1.getValueAt(row, 0).toString();
-        tfNis.setText(nis);
-        String nama = tblMtkTkj1.getValueAt(row, 1).toString();
-        tfNama.setText(nama);
-        String kode_mapel = tblMtkTkj1.getValueAt(row, 2).toString();
-        tfKodeMapel.setText(kode_mapel);
-        String mapel = tblMtkTkj1.getValueAt(row, 3).toString();
-        cmMapel.setSelectedItem(mapel);
-        String nilai = tblMtkTkj1.getValueAt(row, 4).toString();
-        tfNilai.setText(nilai);
+        clickedTable(tblMtkTkj1, evt);
     }//GEN-LAST:event_tblMtkTkj1MouseClicked
 
     private void tblBingTkj1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBingTkj1MouseClicked
-        int row = tblBingTkj1.rowAtPoint(evt.getPoint());
-        String nis = tblBingTkj1.getValueAt(row, 0).toString();
-        tfNis.setText(nis);
-        String nama = tblBingTkj1.getValueAt(row, 1).toString();
-        tfNama.setText(nama);
-        String kode_mapel = tblBingTkj1.getValueAt(row, 2).toString();
-        tfKodeMapel.setText(kode_mapel);
-        String mapel = tblBingTkj1.getValueAt(row, 3).toString();
-        cmMapel.setSelectedItem(mapel);
-        String nilai = tblBingTkj1.getValueAt(row, 4).toString();
-        tfNilai.setText(nilai);
+        clickedTable(tblBingTkj1, evt);
     }//GEN-LAST:event_tblBingTkj1MouseClicked
 
     private void tblBindoTkj1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBindoTkj1MouseClicked
-        int row = tblBindoTkj1.rowAtPoint(evt.getPoint());
-        String nis = tblBindoTkj1.getValueAt(row, 0).toString();
-        tfNis.setText(nis);
-        String nama = tblBindoTkj1.getValueAt(row, 1).toString();
-        tfNama.setText(nama);
-        String kode_mapel = tblBindoTkj1.getValueAt(row, 2).toString();
-        tfKodeMapel.setText(kode_mapel);
-        String mapel = tblBindoTkj1.getValueAt(row, 3).toString();
-        cmMapel.setSelectedItem(mapel);
-        String nilai = tblBindoTkj1.getValueAt(row, 4).toString();
-        tfNilai.setText(nilai);
+        clickedTable(tblBindoTkj1, evt);
     }//GEN-LAST:event_tblBindoTkj1MouseClicked
 
     private void tfKodeMapelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfKodeMapelActionPerformed
