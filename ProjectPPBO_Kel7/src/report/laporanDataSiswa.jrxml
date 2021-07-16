@@ -22,7 +22,7 @@
 		<band height="95" splitType="Stretch">
 			<image>
 				<reportElement uuid="dfab61aa-8949-4859-9a28-86c5cb744f9e" x="0" y="0" width="80" height="80"/>
-				<imageExpression><![CDATA["D:\\ProjectPPBO_Kel7\\ProjectPPBO_Kel7\\src\\images\\logoSmk2.png"]]></imageExpression>
+				<imageExpression><![CDATA["C:\\Users\\USER\\Documents\\NetBeansProjects\\ProjectPPBO_Kel7\\ProjectPPBO_Kel7\\src\\images\\logoSmk2.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement uuid="66de79a1-5709-4253-a950-9cc378130b6f" x="151" y="0" width="276" height="28"/>
