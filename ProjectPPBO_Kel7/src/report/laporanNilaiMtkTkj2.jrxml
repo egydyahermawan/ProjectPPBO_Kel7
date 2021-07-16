@@ -26,7 +26,7 @@ n.kode_mapel IN (SELECT kode_mapel FROM mapel WHERE nama_mapel = 'Matematika')]]
 		<band height="94" splitType="Stretch">
 			<image>
 				<reportElement uuid="3cb155bb-abe5-4c19-8e41-6536aa099e4e" x="0" y="-1" width="80" height="80"/>
-				<imageExpression><![CDATA["D:\\Kuliah Egy\\Semester 2\\PBO\\ProjectPPBO_Kel7\\ProjectPPBO_Kel7\\src\\images\\logoSmk2.png"]]></imageExpression>
+				<imageExpression><![CDATA["D:\\ProjectPPBO_Kel7\\ProjectPPBO_Kel7\\src\\images\\logoSmk2.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement uuid="33e9b685-5529-4dac-bf28-1276f3d02f83" x="151" y="0" width="276" height="28"/>

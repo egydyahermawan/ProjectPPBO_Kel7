@@ -27,7 +27,7 @@ public class NilaiAkhir extends javax.swing.JFrame {
         NilaiSiswaTKJ2();
         NilaiSiswaTKJ3();
     }
-
+    
     public void NilaiALLSiswa() {
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("NAMA");

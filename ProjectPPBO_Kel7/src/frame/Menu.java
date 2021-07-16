@@ -130,7 +130,7 @@ public class Menu extends javax.swing.JFrame {
                                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel7)
                                     .addComponent(jLabel1))))
-                        .addGap(0, 30, Short.MAX_VALUE))))
+                        .addGap(0, 70, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnKeluar)
