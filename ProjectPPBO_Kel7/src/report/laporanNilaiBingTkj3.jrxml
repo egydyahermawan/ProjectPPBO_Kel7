@@ -26,7 +26,7 @@ n.kode_mapel IN (SELECT kode_mapel FROM mapel WHERE nama_mapel = 'Bahasa Inggris
 		<band height="95" splitType="Stretch">
 			<image>
 				<reportElement uuid="20966b8a-15e0-45ba-b41a-05d08fc7e3d0" x="0" y="0" width="80" height="80"/>
-				<imageExpression><![CDATA["D:\\ProjectPPBO_Kel7\\ProjectPPBO_Kel7\\src\\images\\logoSmk2.png"]]></imageExpression>
+				<imageExpression><![CDATA["E:\\ProjectPPBO_Kel7\\ProjectPPBO_Kel7\\src\\images\\logoSmk2.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement uuid="95407c78-afab-4c95-85b1-7ec4cc6f54f7" x="151" y="0" width="276" height="28"/>
