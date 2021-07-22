@@ -85,7 +85,7 @@ n.kode_mapel IN (SELECT kode_mapel FROM mapel WHERE nama_mapel = 'Bahasa Indones
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch">
+		<band height="22" splitType="Stretch">
 			<textField>
 				<reportElement uuid="81e56648-171a-45ea-b8bf-39c242b78387" x="113" y="0" width="128" height="20"/>
 				<box leftPadding="8" rightPadding="8">
