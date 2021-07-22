@@ -393,7 +393,7 @@ public class Siswa extends javax.swing.JFrame {
 
     private void btnKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKembaliActionPerformed
         this.dispose();
-        new Menu().setVisible(true);
+        new Menu2().setVisible(true);
     }//GEN-LAST:event_btnKembaliActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed

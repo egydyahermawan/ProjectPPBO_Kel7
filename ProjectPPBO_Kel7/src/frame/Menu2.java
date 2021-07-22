@@ -34,10 +34,10 @@ public class Menu2 extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        lblNilaiAkhir = new javax.swing.JLabel();
+        lblNilaiSiswa = new javax.swing.JLabel();
+        lblMapel = new javax.swing.JLabel();
+        lblDataSiswa = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -102,24 +102,39 @@ public class Menu2 extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jLabel5.setFont(new java.awt.Font("Mongolian Baiti", 1, 14)); // NOI18N
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Nilai_Akhir.png"))); // NOI18N
-        jLabel5.setText("NILAI AKHIR SISWA");
-
-        jLabel6.setFont(new java.awt.Font("Mongolian Baiti", 1, 14)); // NOI18N
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Nilai.png"))); // NOI18N
-        jLabel6.setText("NILAI SISWA");
-
-        jLabel7.setFont(new java.awt.Font("Mongolian Baiti", 1, 14)); // NOI18N
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mapel.png"))); // NOI18N
-        jLabel7.setText("MATA PELAJARAN SISWA");
-
-        jLabel8.setFont(new java.awt.Font("Mongolian Baiti", 1, 14)); // NOI18N
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user.png"))); // NOI18N
-        jLabel8.setText("DATA SISWA");
-        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblNilaiAkhir.setFont(new java.awt.Font("Mongolian Baiti", 1, 14)); // NOI18N
+        lblNilaiAkhir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Nilai_Akhir.png"))); // NOI18N
+        lblNilaiAkhir.setText("NILAI AKHIR SISWA");
+        lblNilaiAkhir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel8MouseClicked(evt);
+                lblNilaiAkhirMouseClicked(evt);
+            }
+        });
+
+        lblNilaiSiswa.setFont(new java.awt.Font("Mongolian Baiti", 1, 14)); // NOI18N
+        lblNilaiSiswa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Nilai.png"))); // NOI18N
+        lblNilaiSiswa.setText("NILAI SISWA");
+        lblNilaiSiswa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblNilaiSiswaMouseClicked(evt);
+            }
+        });
+
+        lblMapel.setFont(new java.awt.Font("Mongolian Baiti", 1, 14)); // NOI18N
+        lblMapel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mapel.png"))); // NOI18N
+        lblMapel.setText("MATA PELAJARAN SISWA");
+        lblMapel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMapelMouseClicked(evt);
+            }
+        });
+
+        lblDataSiswa.setFont(new java.awt.Font("Mongolian Baiti", 1, 14)); // NOI18N
+        lblDataSiswa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user.png"))); // NOI18N
+        lblDataSiswa.setText("DATA SISWA");
+        lblDataSiswa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblDataSiswaMouseClicked(evt);
             }
         });
 
@@ -134,12 +149,12 @@ public class Menu2 extends javax.swing.JFrame {
             .addGroup(bgLayout.createSequentialGroup()
                 .addGap(116, 116, 116)
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel8))
+                    .addComponent(lblNilaiSiswa)
+                    .addComponent(lblDataSiswa))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel5))
+                    .addComponent(lblMapel)
+                    .addComponent(lblNilaiAkhir))
                 .addGap(118, 118, 118))
             .addGroup(bgLayout.createSequentialGroup()
                 .addGap(320, 320, 320)
@@ -152,12 +167,12 @@ public class Menu2 extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(73, 73, 73)
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel7))
+                    .addComponent(lblDataSiswa)
+                    .addComponent(lblMapel))
                 .addGap(41, 41, 41)
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblNilaiSiswa)
+                    .addComponent(lblNilaiAkhir, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addComponent(jLabel10))
         );
@@ -167,24 +182,39 @@ public class Menu2 extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 0, 0)
                 .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(51, 51, 51))
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 0, 0)
                 .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+    private void lblDataSiswaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDataSiswaMouseClicked
         new Siswa().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jLabel8MouseClicked
+    }//GEN-LAST:event_lblDataSiswaMouseClicked
+
+    private void lblNilaiSiswaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNilaiSiswaMouseClicked
+        new NilaiSiswa().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_lblNilaiSiswaMouseClicked
+
+    private void lblMapelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMapelMouseClicked
+        new Matapelajaran().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_lblMapelMouseClicked
+
+    private void lblNilaiAkhirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNilaiAkhirMouseClicked
+        new NilaiAkhir().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_lblNilaiAkhirMouseClicked
 
     /**
      * @param args the command line arguments
@@ -215,6 +245,7 @@ public class Menu2 extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Menu2().setVisible(true);
             }
@@ -228,11 +259,11 @@ public class Menu2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblDataSiswa;
+    private javax.swing.JLabel lblMapel;
+    private javax.swing.JLabel lblNilaiAkhir;
+    private javax.swing.JLabel lblNilaiSiswa;
     // End of variables declaration//GEN-END:variables
 }

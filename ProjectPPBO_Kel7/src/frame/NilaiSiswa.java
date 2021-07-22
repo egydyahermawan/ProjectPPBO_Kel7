@@ -1705,7 +1705,7 @@ public class NilaiSiswa extends javax.swing.JFrame {
     }//GEN-LAST:event_tfKodeMapelActionPerformed
 
     private void btnKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKembaliActionPerformed
-        new Menu().setVisible(true);
+        new Menu2().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnKembaliActionPerformed
 
