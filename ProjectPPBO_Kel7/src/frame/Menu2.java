@@ -124,7 +124,7 @@ public class Menu2 extends javax.swing.JFrame {
         });
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Copyright_Symbol.png"))); // NOI18N
-        jLabel10.setText("2021 IqbalDanEgy.All Right Reserved ");
+        jLabel10.setText("2021 IqbalDanEgy. All Right Reserved ");
 
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
         bg.setLayout(bgLayout);
