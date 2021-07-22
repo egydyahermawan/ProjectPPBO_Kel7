@@ -8,6 +8,12 @@ package frame;
 import model.ModelMataPelajaran;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.InputStream;
+import javax.swing.JOptionPane;
+import koneksi.Konfig;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 /**
  *
  * @author LENOVO
@@ -278,7 +284,14 @@ public class Matapelajaran extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBatalActionPerformed
 
     private void btnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakActionPerformed
-        // TODO add your handling code here:
+        try{
+            InputStream is = NilaiAkhir.class.getResourceAsStream("/report/laporanMapel.jasper");
+            JasperPrint jsPrint = JasperFillManager.fillReport(is, null, Konfig.configDB());
+            JasperViewer.viewReport(jsPrint, false);
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Gagal mencetak laporan karena :"
+            + e.getMessage(), "Cetak Laporan", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnCetakActionPerformed
 
     private void kodeMapelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kodeMapelActionPerformed
