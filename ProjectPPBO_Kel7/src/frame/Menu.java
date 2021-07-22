@@ -194,6 +194,11 @@ public class Menu extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnNilaiAkhirActionPerformed
 
+    private void btnNilaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNilaiActionPerformed
+        new NilaiSiswa().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnNilaiActionPerformed
+
     private void btnMapelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMapelActionPerformed
         new Matapelajaran().setVisible(true);
         this.dispose();
@@ -203,11 +208,6 @@ public class Menu extends javax.swing.JFrame {
         new Siswa().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnSiswaActionPerformed
-
-    private void btnNilaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNilaiActionPerformed
-        new NilaiSiswa().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnNilaiActionPerformed
 
     /**
      * @param args the command line arguments
