@@ -14,6 +14,8 @@ import koneksi.Konfig;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 /**
  *
@@ -28,6 +30,8 @@ public class NilaiSiswa extends javax.swing.JFrame {
         tfNis.setVisible(false);
         tfKodeMapel.setVisible(false);
         kosongForm();
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
     }
    
     public void kosongForm(){
@@ -795,6 +799,7 @@ public class NilaiSiswa extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("for Admin");
 
+        tblNama.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tblNama.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -823,6 +828,7 @@ public class NilaiSiswa extends javax.swing.JFrame {
             }
         });
 
+        tblMtkTkj1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tblMtkTkj1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -873,6 +879,7 @@ public class NilaiSiswa extends javax.swing.JFrame {
 
         tabMapelTkj1.addTab("MTK", jPanel1);
 
+        tblBingTkj1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tblBingTkj1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -923,6 +930,7 @@ public class NilaiSiswa extends javax.swing.JFrame {
 
         tabMapelTkj1.addTab("Bahasa Inggris", jPanel6);
 
+        tblBindoTkj1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tblBindoTkj1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -992,6 +1000,7 @@ public class NilaiSiswa extends javax.swing.JFrame {
 
         tabKelas.addTab("Kelas TKJ 1", jPanel2);
 
+        tblMtkTkj2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tblMtkTkj2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -1042,6 +1051,7 @@ public class NilaiSiswa extends javax.swing.JFrame {
 
         tabMapelTkj2.addTab("MTK", jPanel8);
 
+        tblBingTkj2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tblBingTkj2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -1092,6 +1102,7 @@ public class NilaiSiswa extends javax.swing.JFrame {
 
         tabMapelTkj2.addTab("Bahasa Inggris", jPanel9);
 
+        tblBindoTkj2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tblBindoTkj2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -1161,6 +1172,7 @@ public class NilaiSiswa extends javax.swing.JFrame {
 
         tabKelas.addTab("Kelas TKJ 2", jPanel3);
 
+        tblMtkTkj3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tblMtkTkj3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -1211,6 +1223,7 @@ public class NilaiSiswa extends javax.swing.JFrame {
 
         tabMapelTkj3.addTab("MTK", jPanel11);
 
+        tblBingTkj3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tblBingTkj3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -1261,6 +1274,7 @@ public class NilaiSiswa extends javax.swing.JFrame {
 
         tabMapelTkj3.addTab("Bahasa Inggris", jPanel12);
 
+        tblBindoTkj3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tblBindoTkj3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -1329,6 +1343,7 @@ public class NilaiSiswa extends javax.swing.JFrame {
 
         tabKelas.addTab("Kelas TKJ 3", jPanel4);
 
+        tblMtkRpl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tblMtkRpl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -1379,6 +1394,7 @@ public class NilaiSiswa extends javax.swing.JFrame {
 
         tabMapelRpl.addTab("MTK", jPanel14);
 
+        tblBingRpl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tblBingRpl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -1429,6 +1445,7 @@ public class NilaiSiswa extends javax.swing.JFrame {
 
         tabMapelRpl.addTab("Bahasa Inggris", jPanel15);
 
+        tblBindoRpl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tblBindoRpl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -1524,10 +1541,6 @@ public class NilaiSiswa extends javax.swing.JFrame {
                                         .addComponent(jLabel3)
                                         .addComponent(cmMapel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(btnHapus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                             .addComponent(tfNilai, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(jLabel4)
@@ -1542,13 +1555,17 @@ public class NilaiSiswa extends javax.swing.JFrame {
                                             .addComponent(tfKodeMapel, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(btnCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addComponent(tabKelas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                        .addComponent(tabKelas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1571,19 +1588,15 @@ public class NilaiSiswa extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tfNama, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel3)
                                 .addGap(3, 3, 3)
-                                .addComponent(cmMapel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cmMapel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfNilai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(37, 37, 37)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(btnSimpan)
-                                    .addComponent(btnHapus)))
+                                .addComponent(tfNilai, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1592,15 +1605,19 @@ public class NilaiSiswa extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(tfNis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(tfKodeMapel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnBatal)
-                            .addComponent(btnEdit))
+                            .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(btnCetak))
+                        .addComponent(btnCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(tabKelas, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnKembali)
+                .addComponent(btnKembali, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -1799,7 +1816,7 @@ public class NilaiSiswa extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NilaiSiswa().setVisible(true);
+//                new NilaiSiswa().setVisible(true);
             }
         });
     }
